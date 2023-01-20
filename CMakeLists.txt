@@ -3,4 +3,4 @@ project(Asg)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Asg main.cpp)
+add_executable(Asg main.cpp UserDictionary.cpp UserDictionary.h User.h)
