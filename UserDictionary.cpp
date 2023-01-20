@@ -75,7 +75,7 @@ void UserDictionary::remove(const UsernameType& username) {
     }
 }
 
-User* UserDictionary::getUser(const UsernameType& username) {
+User* UserDictionary::getUser(const UsernameType &username, const PasswordType &password) {
     int index = hash(username);
     PasswordType user;
 

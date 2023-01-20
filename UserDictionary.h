@@ -38,7 +38,7 @@ public:
 
     void remove(const UsernameType& username);
 
-    User* getUser(const UsernameType& username);
+    User* getUser(const UsernameType &username, const PasswordType &password);
 
     bool isEmpty() const;
 
