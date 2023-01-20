@@ -3,16 +3,19 @@
 using namespace std;
 
 int printMenu(string mArray[], int menuLength);
-void guestMenu();
+int guestMenu();
 void registerUser();
 void login();
+void topicMenu();
+
+void postMenu();
 
 int main() {
     cout <<  "----------------------"<< endl;
     cout <<  "//     DSA Forum    //"<< endl;
     cout <<  "----------------------"<< endl;
 
-    guestMenu();
+    int status = guestMenu();
 
     return 0;
 }
@@ -27,24 +30,24 @@ int printMenu(string mArray[], int menuLength) {
     return chosen;
 }
 
-void guestMenu() {
+int guestMenu() {
     string guestMenu[] = {"1. Register", "2. Log in", "3. Continue as Guest" };
     int option = printMenu(guestMenu, 3);
     switch(option) {
         case 1:
             cout << endl <<  "Register";
             registerUser();
-            break;
+            return 1;
         case 2:
             cout << endl << "Login";
             login();
-            break;
+            return 1;
         case 3:
-            cout << "Guest menu thingie" << endl;
-            break;
+            cout << "Guest menu " << endl;
         default:
             cout << "Please enter a valid option" << endl;
     }
+    return 0;
 }
 
 void registerUser() {
@@ -58,7 +61,9 @@ void registerUser() {
     cout << "Enter password: ";
     cin >> password;
 
-    //TODO: go to topic page
+    //TODO: Add user into user class
+
+    cout<< "User has been registered!" << endl << endl;
 }
 
 void login() {
@@ -70,5 +75,24 @@ void login() {
     cin >> password;
     //TODO: search for username in user tree
 
-    //TODO: go to topic page
+    cout<< "User has been logged in!" << endl << endl;
 }
+
+void topicMenu() {
+    string topicMenu[] = {"1. View Topics","2.Create Topic"};
+    int option = printMenu(topicMenu, 2);
+    switch (option) {
+        case 1:
+            cout << endl << "Display topics";
+            break;
+        case 2:
+            cout << endl << "Creating new topic";
+            break;
+    }
+}
+
+void postMenu() {
+    string postMenu[11];
+    //TODO: Read posts from data, add to array, add back to topics page;
+}
+
