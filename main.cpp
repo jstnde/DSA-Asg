@@ -1,12 +1,10 @@
 #include <iostream>
+
 using namespace std;
 
-void guestMenu();
 int printMenu(string mArray[], int menuLength);
-
-
+void guestMenu();
 void registerUser();
-
 void login();
 
 int main() {
@@ -15,6 +13,8 @@ int main() {
     cout <<  "----------------------"<< endl;
 
     guestMenu();
+
+    return 0;
 }
 
 int printMenu(string mArray[], int menuLength) {
