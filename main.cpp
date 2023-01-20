@@ -19,7 +19,7 @@ int main() {
     UserDictionary users;
 
     User *user = guestMenu(&users);
-
+    topicMenu();
     cout << (user == nullptr ? "guest" : user->username) << endl;
 
     return 0;
@@ -32,11 +32,11 @@ User* guestMenu(UserDictionary *users) {
         int option = printMenu(guestMenu, 3);
         switch (option) {
             case 1:
-                cout << endl <<  "Register";
+                cout <<  "Register";
                 user = registerUser(users);
                 break;
             case 2:
-                cout << endl << "Login";
+                cout << "Login";
                 user = login(users);
                 break;
             case 3:
@@ -97,13 +97,19 @@ User* login(UserDictionary *users) {
 void topicMenu() {
     string topicMenu[] = {"1. View Topics","2.Create Topic"};
     int option = printMenu(topicMenu, 2);
-    switch (option) {
-        case 1:
-            cout << endl << "Display topics";
-            break;
-        case 2:
-            cout << endl << "Creating new topic";
-            break;
+    while (true) {
+        switch (option) {
+            case 1:
+                cout << "Display topics";
+                break;
+            case 2:
+                cout << "Creating new topic";
+                break;
+            default:
+                cout << "Please enter a valid option" << endl;
+                break;
+        }
+
     }
 }
 
