@@ -1,5 +1,6 @@
 #include <iostream>
 #include "UserDictionary.h"
+#include "Forum.h"
 
 using namespace std;
 
@@ -7,8 +8,9 @@ User* guestMenu(UserDictionary *users);
 int printMenu(string mArray[], int menuLength);
 User* registerUser(UserDictionary *users);
 User* login(UserDictionary *users);
-void topicMenu();
+Topic* topicMenu(Forum *topics);
 void postMenu();
+Topic* createTopic(Forum *topics);
 
 int main() {
     cout <<  "----------------------"<< endl;
@@ -17,9 +19,10 @@ int main() {
 
     //TODO: init users with text file(?)
     UserDictionary users;
+    Forum topics;
 
     User *user = guestMenu(&users);
-    topicMenu();
+    Topic *topic = topicMenu(&topics);
     cout << (user == nullptr ? "guest" : user->username) << endl;
 
     return 0;
@@ -94,23 +97,34 @@ User* login(UserDictionary *users) {
     return user;
 }
 
-void topicMenu() {
-    string topicMenu[] = {"1. View Topics","2.Create Topic"};
+Topic* topicMenu(Forum *topics) {
+    string topicMenu[] = {"1. View Topics", "2.Create Topic"};
     int option = printMenu(topicMenu, 2);
-    while (true) {
+    //TODO: make it loop
+//    while (true) {
         switch (option) {
             case 1:
                 cout << "Display topics";
                 break;
             case 2:
                 cout << "Creating new topic";
+                createTopic(topics);
                 break;
             default:
                 cout << "Please enter a valid option" << endl;
                 break;
-        }
-
+//        }
     }
+}
+
+Topic* createTopic(Forum *topics) {
+    string title;
+
+    cout << endl << "Enter the topic title: ";
+    cin >> title;
+
+    topics->insert(title);
+    cout << "Topic Created" << endl;
 }
 
 void postMenu() {
