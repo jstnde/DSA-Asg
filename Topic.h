@@ -5,12 +5,20 @@
 #ifndef ASG_TOPIC_H
 #define ASG_TOPIC_H
 
-#include <string>
+#include "Post.h"
 
-struct Topic {
+class Topic {
     std::string title;
     Topic *leftNode;
     Topic *rightNode;
+    Post *top;
+
+public:
+    Topic();
+    ~Topic();
+    bool createPost(TitleType postTitle, TextType text, User *author);
+    bool deletePost(TitleType &postTitle, User *user);
+    bool isEmpty();
 };
 
 #endif //ASG_TOPIC_H
