@@ -1,5 +1,6 @@
 #include <iostream>
 #include "UserDictionary.h"
+#include "Forum.h"
 
 using namespace std;
 
@@ -94,16 +95,25 @@ User* login(UserDictionary *users) {
     return user;
 }
 
-void topicMenu() {
+void topicMenu(Forum *forum, User *user) {
     string topicMenu[] = {"1. View Topics","2.Create Topic"};
     int option = printMenu(topicMenu, 2);
+    string title;
     while (true) {
         switch (option) {
             case 1:
                 cout << "Display topics";
                 break;
             case 2:
-                cout << "Creating new topic";
+                cout << "Creating new topic" << endl;
+                if (user != nullptr) {
+                    cout << "Enter title: ";
+                    cin >> title;
+                    forum->insert(title);
+                }
+                else {
+                    cout << "Need to login to create a topic!" << endl;
+                }
                 break;
             default:
                 cout << "Please enter a valid option" << endl;
