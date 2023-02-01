@@ -8,7 +8,6 @@
 #include "Topic.h"
 
 class Forum {
-private:
     Topic* root;
 
 public:
@@ -16,13 +15,23 @@ public:
 
     void insert(std::string t);
 
-    void insert(Topic* node, std::string t);
+    void insert(Topic *&node, std::string t);
 
     void inOrder();
 
     void inOrder(Topic* t);
 
     bool isEmpty();
+
+    int getHeight();
+
+    int getHeight(Topic *node);
+
+    int balanceFactor(Topic *node);
+
+    void leftRotate(Topic *&rt);
+
+    void rightRotate(Topic *&rt);
 };
 
 
