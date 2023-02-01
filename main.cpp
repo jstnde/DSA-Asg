@@ -8,8 +8,9 @@ User* guestMenu(UserDictionary *users);
 int printMenu(string mArray[], int menuLength);
 User* registerUser(UserDictionary *users);
 User* login(UserDictionary *users);
-void topicMenu();
+Topic* topicMenu(Forum *topics);
 void postMenu();
+Topic* createTopic(Forum *topics);
 
 int main() {
     cout <<  "----------------------"<< endl;
@@ -18,9 +19,10 @@ int main() {
 
     //TODO: init users with text file(?)
     UserDictionary users;
+    Forum topics;
 
     User *user = guestMenu(&users);
-    topicMenu();
+    Topic *topic = topicMenu(&topics);
     cout << (user == nullptr ? "guest" : user->username) << endl;
 
     return 0;
@@ -96,7 +98,7 @@ User* login(UserDictionary *users) {
 }
 
 void topicMenu(Forum *forum, User *user) {
-    string topicMenu[] = {"1. View Topics","2.Create Topic"};
+    string topicMenu[] = {"1. View Topics", "2.Create Topic"};
     int option = printMenu(topicMenu, 2);
     string title;
     while (true) {
@@ -105,22 +107,26 @@ void topicMenu(Forum *forum, User *user) {
                 cout << "Display topics";
                 break;
             case 2:
-                cout << "Creating new topic" << endl;
-                if (user != nullptr) {
-                    cout << "Enter title: ";
-                    cin >> title;
-                    forum->insert(title);
-                }
-                else {
-                    cout << "Need to login to create a topic!" << endl;
-                }
+                cout << "Creating new topic";
+                createTopic(forum);
                 break;
             default:
                 cout << "Please enter a valid option" << endl;
                 break;
-        }
-
+//        }
     }
+    return NULL;
+}
+
+Topic* createTopic(Forum *topics) {
+    string title;
+
+    cout << endl << "Enter the topic title: ";
+    cin >> title;
+
+    topics->insert(title);
+    cout << "Topic Created" << endl;
+    return NULL;
 }
 
 void postMenu() {
