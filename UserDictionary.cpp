@@ -77,11 +77,10 @@ void UserDictionary::remove(const UsernameType& username) {
 
 User* UserDictionary::getUser(const UsernameType &username, const PasswordType &password) {
     int index = hash(username);
-    PasswordType user;
 
     User *cur = users[index];
     for (; cur != nullptr; cur = cur->next) {
-        if (cur->username == username) {
+        if (cur->username == username && cur->password == password) {
             return cur;
         }
     }
