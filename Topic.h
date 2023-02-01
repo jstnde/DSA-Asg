@@ -8,12 +8,12 @@
 #include "Post.h"
 
 class Topic {
+public:
     std::string title;
     Topic *leftNode;
     Topic *rightNode;
     Post *top;
 
-public:
     Topic();
     ~Topic();
     bool createPost(TitleType postTitle, TextType text, User *author);

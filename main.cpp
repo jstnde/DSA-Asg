@@ -115,6 +115,7 @@ Topic* topicMenu(Forum *topics) {
                 break;
 //        }
     }
+    return NULL;
 }
 
 Topic* createTopic(Forum *topics) {
@@ -125,6 +126,7 @@ Topic* createTopic(Forum *topics) {
 
     topics->insert(title);
     cout << "Topic Created" << endl;
+    return NULL;
 }
 
 void postMenu() {
